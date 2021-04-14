@@ -10,7 +10,7 @@ Supported devices are:
 
 As noted on [their website](https://f-machine.com/index.php/remote-control-detail), F-Machine uses 5 different types (A to E), probably with different commands, and maybe different frequencies.
 
-**This should be used to make your own remote. Due to the how unreliable the communication method is, this is not suited for automation***
+**This should be used to make your own remote. Due to the how unreliable the communication method is, this is not suited for automation**
 
 ## Hardware
 
