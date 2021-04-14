@@ -17,11 +17,9 @@ int data = 0;
  */
 
 int SHORT_WAIT_US = 500;
-int LONG_WAIT_US = 1500;
+int LONG_WAIT_US = 3 * SHORT_WAIT_US;
 
-int COMMAND_DELAY_MS = 20;
-
-int DEFAULT_REPEAT = 8;
+int DEFAULT_REPEAT = 7; // How many time to repeat a command
 
 void send_bit(int b) {
   if (b == 0) {
@@ -68,12 +66,11 @@ void send_command(String command, int repeat=DEFAULT_REPEAT) {
         send_bit(-1);
       }
     }
-    // Doesn't look very standard, but there is always a short spike
-    // being sent at the end of every command.
+    // send the "Sync bit"
     digitalWrite(data, 1);
     delayMicroseconds(SHORT_WAIT_US);
     digitalWrite(data, 0);
-    delay(COMMAND_DELAY_MS);
+    delayMicroseconds(SHORT_WAIT_US * 42 ); // per 2262 doc
   }
 }
 

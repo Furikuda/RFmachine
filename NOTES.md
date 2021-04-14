@@ -4,11 +4,25 @@ The F-Machine devices tested (Gigolo & Tremblr) both come with a remote with 3 o
 
 ![Remote type A for Gigolo](docs/pics/Gigolo_remote_A_SC2262.jpg)
 
-They control a [SC2262](http://www.sc-tech.cn/en/SC2262.pdf) encoder that sends tri-states bits (1/0/F) as fixed code commands. These are used to then control a 315Mhz RF transmitter to send these as ASK/OOK encoded.
+They control a [SC2262](https://datasheet.lcsc.com/szlcsc/PT2262_C16390.pdf) encoder that sends tri-states bits (1/0/F) as fixed code commands. These are used to then control a 315Mhz RF transmitter to send these as ASK/OOK encoded.
+
+These commands have 12 bits length. Each bit is a waveform consisting of 2 pulse cycles:
+
+ * Bit '0': `2*(short high, long low)`
+ * Bit '1': `2*(long high, short low)`
+ * But 'F' (floating): `short high, long low, long high, short low`
+
+A 'long' pulse is 3 times longer than a short one.
+
+A command needs to also have a synchronisation bit emitted: `short high, (42*short) low`.
+
+It is also worth noting that according to the reciever (2272) documentation, 2 identical commands need to be emitted for the transmission to be valid, but experimentation show that at the very least, a command needs to be emitted 5 times to make the device react.
 
 As noted on [their website](https://f-machine.com/index.php/remote-control-detail), F-Machine uses 5 different types (A to E), probably with different commands, and maybe different frequencies.
 
 ## Listening to the transmissions
+
+While it is possible de deduce the commands being sent by the 2262 by looking at how the address & data pins are connected, it's funnier to just use all your shiny tools.
 
 Using a cheap USB [RTLSDR](https://www.adafruit.com/product/1497), there are two ways to listen to the communications
 
