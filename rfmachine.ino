@@ -21,7 +21,7 @@ int LONG_WAIT_US = 1500;
 
 int COMMAND_DELAY_MS = 20;
 
-int DEFAULT_REPEAT = 6;
+int DEFAULT_REPEAT = 8;
 
 void send_bit(int b) {
   if (b == 0) {
@@ -44,7 +44,6 @@ void send_bit(int b) {
     digitalWrite(data, 0);
     delayMicroseconds(SHORT_WAIT_US);
   } else {
-   
     digitalWrite(data, 1);
     delayMicroseconds(SHORT_WAIT_US);
     digitalWrite(data, 0);
@@ -56,10 +55,11 @@ void send_bit(int b) {
   }
 }
 
-void send_command(const char* command, int repeat=DEFAULT_REPEAT) {
+void send_command(String command, int repeat=DEFAULT_REPEAT) {
+  char c;
   for (int r = 0; r < repeat; r++) {
-    for (int i = 0; i < strlen(command); i++ ) {
-      char c = command[i];
+    for (int i = 0; i < command.length(); i++ ) {
+      c = command[i];
       if (c == '1') {
         send_bit(1);
       } else if (c == '0') {
@@ -67,13 +67,13 @@ void send_command(const char* command, int repeat=DEFAULT_REPEAT) {
       } else {
         send_bit(-1);
       }
-      // Doesn't look very standard, but there is always a short spike
-      // being sent at the end of every command.
-      digitalWrite(data, 1);
-      delayMicroseconds(SHORT_WAIT_US);
-      digitalWrite(data, 0);
-      delay(COMMAND_DELAY_MS);
     }
+    // Doesn't look very standard, but there is always a short spike
+    // being sent at the end of every command.
+    digitalWrite(data, 1);
+    delayMicroseconds(SHORT_WAIT_US);
+    digitalWrite(data, 0);
+    delay(COMMAND_DELAY_MS);
   }
 }
 
@@ -81,53 +81,53 @@ void send_command(const char* command, int repeat=DEFAULT_REPEAT) {
  * Commands for the Gigolo "A" remote
  */
 void gigolo_a_up() {
-  const char* command = "FFFFF1111000";
+  String command = "FFFFF1111000";
   send_command(command);
-  Serial.println("Speed UP");
+  Serial.println("Gigolo (A) Speed UP");
 }
 
 void gigolo_a_ok() {
-  const char* command = "FFFFF1110010";
+  String command = "FFFFF1110010";
   send_command(command);
-  Serial.println("ON/OFF");
+  Serial.println("Gigolo (A) ON/OFF");
 }
 
 void gigolo_a_down() {
-  const char* command = "FFFFF1110100";
+  String command = "FFFFF1110100";
   send_command(command);
-  Serial.println("Speed Down");
+  Serial.println("Gigolo (A) Speed Down");
 }
 
 /*
  * Commands for the Tremblr "A" remote
  */
 void tremblr_a_up() {
-  const char* command = "11FFFF001000";
-  send_command(command, 6);
-  Serial.println("Speed Up");
+  String command = "11FFFF001000";
+  send_command(command);
+  Serial.println("Tremblr (A) Speed Up");
 }
 
 void tremblr_a_ok() {
-  const char* command = "11FFFF000010";
-  send_command(command)
-  Serial.println("ON/OFF");
+  String command = "11FFFF000010";
+  send_command(command);
+  Serial.println("Tremblr (A) ON/OFF");
 }
 
 void tremblr_a_down() {
-  const char* command = "11FFFF000100";
-  send_command(command)
-  Serial.println("Sent Down");
+  String command = "11FFFF000100";
+  send_command(command);
+  Serial.println("Tremblr (A) Speed Down");
 }
 void tremblr_a_suck_up() {
-  const char* command = "11FFFF000001";
-  send_command(command)
-  Serial.println("Suck Up");
+  String command = "11FFFF000001";
+  send_command(command, 15);
+  Serial.println("Tremblr (A) Suck Up");
 }
 
 void tremblr_a_suck_down() {
-  const char* command = "11FFFF010000";
-  send_command(command)
-  Serial.println("Suck Down");
+  String command = "11FFFF010000";
+  send_command(command, 15);
+  Serial.println("Tremblr (A) Suck Down");
 }
 
 void setup() {

@@ -54,5 +54,9 @@ The .wav files for each remote can be found here (button are pressed top left to
 
 ## Protocol
 
-Each command noted above, are repeatedly sent, and a command needs to be repeated at least 6 times to be acknowledged by the machine.
+For whatever reason, after the list of tr-state bits are sent, a short "high" transmission is also transmitted.
+
+Each command noted above, is repeatedly transmitted while the button is pressed, and a command needs to be repeated at least 6 times to be acknowledged by the machine.
+
 A pause in transmission is required before sending another command.
+

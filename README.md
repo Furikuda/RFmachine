@@ -10,6 +10,8 @@ Supported devices are:
 
 As noted on [their website](https://f-machine.com/index.php/remote-control-detail), F-Machine uses 5 different types (A to E), probably with different commands, and maybe different frequencies.
 
+**This should be used to make your own remote. Due to the how unreliable the communication method is, this is not suited for automation***
+
 ## Hardware
 
 Any Arduino compatible device should do. Tested on a [Adafruit Trinket M0](https://www.adafruit.com/product/3500).
@@ -29,6 +31,6 @@ Unfortunately, because Python is a bit heavy, it's hard to make it do proper sub
 Just load `rfmachine.ino` in your Arduino IDE, edit the `loop()` command to your desires, and flash it on the required device.
 
 
-## Reversing the F-Machine protocol
+## Reversing the F-Machine remotes
 
 More information can be found in the [NOTES.md](NOTES.md) file.
