@@ -34,3 +34,7 @@ Just load `rfmachine.ino` in your Arduino IDE, edit the `loop()` command to your
 ## Reversing the F-Machine remotes
 
 More information can be found in the [NOTES.md](NOTES.md) file.
+
+## Acknowledgements
+
+[@furrtek](https://twitter.com/furrtek) for help with most of this.
