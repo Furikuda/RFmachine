@@ -6,8 +6,9 @@ The F-Machine devices tested (Gigolo & Tremblr) both come with a remote with 3 o
 
 They control a [SC2262](http://www.sc-tech.cn/en/SC2262.pdf) encoder that sends tri-states bits (1/0/F) as fixed code commands. These are used to then control a 315Mhz RF transmitter to send these as ASK/OOK encoded.
 
-## Listening to the transmissions
+As noted on [their website](https://f-machine.com/index.php/remote-control-detail), F-Machine uses 5 different types (A to E), probably with different commands, and maybe different frequencies.
 
+## Listening to the transmissions
 
 Using a cheap USB [RTLSDR](https://www.adafruit.com/product/1497), there are two ways to listen to the communications
 
@@ -33,12 +34,12 @@ Setting it in AM mode, transmissions can me recorded as a .wav file  after click
 
 Opening them in Audacity, we end up with the following traces for each button presses:
 
- * Gigolo
+ * Gigolo (Remote A)
    * Up button (command `FFFFF1111000`) ![Up button](docs/gqrx_am_traces/fmachine_gigolo_a/UP.jpg)
    * ON/OFF button (command `FFFFF1110010`) ![ON/OFF button](docs/gqrx_am_traces/fmachine_gigolo_a/ON_OFF.jpg)
    * Down button (command `FFFFF1110100`) ![Down button](docs/gqrx_am_traces/fmachine_gigolo_a/DOWN.jpg)
 
- * Tremblr
+ * Tremblr (Remote B)
    * Up button (command `11FFFF000010`) ![Up button](docs/gqrx_am_traces/fmachine_tremblr_a/UP.jpg)
    * ON/OFF button (command `11FFFF000010`) ![ON/OFF button](docs/gqrx_am_traces/fmachine_tremblr_a/ON_OFF.jpg)
    * Down button (command `11FFFF000100`) ![Down button](docs/gqrx_am_traces/fmachine_tremblr_a/DOWN.jpg)
@@ -51,3 +52,7 @@ The .wav files for each remote can be found here (button are pressed top left to
  * [gigolo](docs/gqrx_am_traces/fmachine_gigolo_a/top-down-buttons.wav)
  * [tremblr](docs/gqrx_am_traces/fmachine_tremblr_a/top-down-buttons.wav)
 
+## Protocol
+
+Each command noted above, are repeatedly sent, and a command needs to be repeated at least 6 times to be acknowledged by the machine.
+A pause in transmission is required before sending another command.

@@ -2,15 +2,15 @@
  * Emulate F-Machines remotes.
  *
  * Currently supports:
- *  - Gigolo https://f-machine.com/index.php/gigolo-detail
- *  - Tremblr https://f-machine.com/index.php/tremblr-detail
+ *  - Gigolo (remote type 'A') https://f-machine.com/index.php/gigolo-detail
+ *  - Tremblr (remote type 'A')  https://f-machine.com/index.php/tremblr-detail
  */
 
 /*
  * Sets the data pin to talk to the H34A transmitter.
  */
-int data = 0;
 
+int data = 0;
 
 /*
  * Code here

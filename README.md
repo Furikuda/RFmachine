@@ -5,8 +5,10 @@ Arduino code to control F-Machine devices via a H34A 315Mhz dongle.
 
 Supported devices are:
 
- * [F-Machine Gigolo](https://f-machine.com/index.php/gigolo-detail)
- * [F-Machine Tremblr](https://f-machine.com/index.php/tremblr-detail)
+ * [F-Machine Gigolo (remote type 'A')](https://f-machine.com/index.php/gigolo-detail)
+ * [F-Machine Tremblr (remote type 'A')](https://f-machine.com/index.php/tremblr-detail)
+
+As noted on [their website](https://f-machine.com/index.php/remote-control-detail), F-Machine uses 5 different types (A to E), probably with different commands, and maybe different frequencies.
 
 ## Hardware
 
