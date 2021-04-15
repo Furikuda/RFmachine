@@ -53,7 +53,7 @@ Opening them in Audacity, we end up with the following traces for each button pr
    * ON/OFF button (command `FFFFF1110010`) ![ON/OFF button](docs/gqrx_am_traces/fmachine_gigolo_a/ON_OFF.jpg)
    * Down button (command `FFFFF1110100`) ![Down button](docs/gqrx_am_traces/fmachine_gigolo_a/DOWN.jpg)
 
- * Tremblr (Remote B)
+ * Tremblr (Remote A)
    * Up button (command `11FFFF001000`) ![Up button](docs/gqrx_am_traces/fmachine_tremblr_a/UP.jpg)
    * ON/OFF button (command `11FFFF000010`) ![ON/OFF button](docs/gqrx_am_traces/fmachine_tremblr_a/ON_OFF.jpg)
    * Down button (command `11FFFF000100`) ![Down button](docs/gqrx_am_traces/fmachine_tremblr_a/DOWN.jpg)
