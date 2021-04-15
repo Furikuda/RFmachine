@@ -10,7 +10,7 @@ Supported devices are:
 
 As noted on [their website](https://f-machine.com/index.php/remote-control-detail), F-Machine uses 5 different types (A to E), probably with different commands, and maybe different frequencies.
 
-**This should be used to make your own remote. Due to the how unreliable the communication method is, this is not suited for automation**
+**This should be used to make your own remote. This might not suited for automation, as there is no feedback mechanism to make sure the device actually got the command and does what is expected.**
 
 ## Hardware
 
@@ -24,11 +24,14 @@ It is worth noting here that you won't be able to simply re-implement the Trembl
 
 ## Software
 
-Unfortunately, because Python is a bit heavy, it's hard to make it do proper sub-millisecond timings on microcontrollers, that's why the code is (horrible) C++.
+Unfortunately, because Python is a bit heavy, it's hard to make it do proper sub-millisecond timings on microcontrollers.
+Also Arduino has a very nice lib that does all the timings for the 2262 for us. Just install the [rc-switch](https://github.com/sui77/rc-switch) library from the Arduino library manager.
 
 ### Usage
 
-Just load `rfmachine.ino` in your Arduino IDE, edit the `loop()` command to your desires, and flash it on the required device.
+Make sure you have installed the [rc-switch](https://github.com/sui77/rc-switch) library from the Arduino library manager.
+
+Load `rfmachine.ino` in your Arduino IDE, edit the `loop()` command to your desires, and flash it on the required device.
 
 
 ## Reversing the F-Machine remotes
